@@ -65,56 +65,7 @@ rpg-portfolio/
 └── package.json                # Dependências
 ```
 
-## 🛠️ Configuração e Instalação
 
-### Pré-requisitos
-- Node.js 18.0 ou superior
-- npm ou yarn
-
-### Instalação
-
-1. **Clone o repositório**
-   ```bash
-   git clone https://github.com/BielTeles/rpg-portfolio.git
-   cd rpg-portfolio
-   ```
-
-2. **Instale as dependências**
-   ```bash
-   npm install
-   ```
-
-3. **Configure o EmailJS** (opcional)
-   - Acesse [EmailJS](https://www.emailjs.com/)
-   - Configure seu serviço de email
-   - Atualize as credenciais em `src/config/constants.ts`
-
-4. **Execute o projeto**
-   ```bash
-   npm run dev
-   ```
-
-5. **Acesse a aplicação**
-   ```
-   http://localhost:3000
-   ```
-
-## 📧 Configuração do EmailJS
-
-Para ativar o sistema de contato:
-
-1. Crie uma conta no [EmailJS](https://www.emailjs.com/)
-2. Configure um serviço de email
-3. Crie um template de email
-4. Atualize o arquivo `src/config/constants.ts`:
-
-```typescript
-export const EMAIL_CONFIG = {
-  SERVICE_ID: "seu_service_id",
-  TEMPLATE_ID: "seu_template_id",
-  PUBLIC_KEY: "sua_public_key",
-} as const;
-```
 
 ## 🎯 Funcionalidades Implementadas
 
@@ -171,33 +122,6 @@ export const EMAIL_CONFIG = {
 - **Sitemap** - Mapeamento de páginas
 - **Performance** - Core Web Vitals otimizados
 
-## 🚀 Scripts Disponíveis
-
-```bash
-# Desenvolvimento
-npm run dev
-
-# Build de produção
-npm run build
-
-# Iniciar aplicação
-npm start
-
-# Linting
-npm run lint
-
-# Linting com correção automática
-npm run lint:fix
-```
-
-## 📊 Métricas de Performance
-
-- **Lighthouse Score**: 95+ em todas as categorias
-- **First Contentful Paint**: < 1.5s
-- **Largest Contentful Paint**: < 2.5s
-- **Cumulative Layout Shift**: < 0.1
-- **Time to Interactive**: < 3.5s
-
 ## 🎨 Design System
 
 ### Paleta de Cores
@@ -217,25 +141,6 @@ npm run lint:fix
 - Barras de progresso animadas
 - Modais com efeitos mágicos
 
-## 🔧 Personalização
-
-Para personalizar o portfolio:
-
-1. **Dados Pessoais**: Edite `src/data/character.ts`
-2. **Configurações**: Modifique `src/config/constants.ts`
-3. **Estilos**: Ajuste `tailwind.config.ts`
-4. **Animações**: Configure `src/hooks/useRPGSystem.ts`
-
-## 🤝 Contribuição
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Fork o projeto
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Push para a branch
-5. Abra um Pull Request
-
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
@@ -244,8 +149,8 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 **Gabriel Teles Rosa**
 - GitHub: [@BielTeles](https://github.com/BielTeles)
-- LinkedIn: [Gabriel Teles Rosa](https://linkedin.com/in/gabriel-teles-rosa)
-- Email: gabriel.teles@example.com
+- LinkedIn: [Gabriel Teles Rosa](https://www.linkedin.com/in/gabrieltelesrosa)
+- Email: devteles@gmail.com
 
 ---
 
