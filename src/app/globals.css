@@ -1,0 +1,654 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Configuração de tema personalizada */
+:root {
+  --font-family-fantasy: "Cinzel", serif;
+  --font-family-code: "Fira Code", monospace;
+  
+  --color-primary-50: #f3e8ff;
+  --color-primary-100: #e9d5ff;
+  --color-primary-200: #d8b4fe;
+  --color-primary-300: #c084fc;
+  --color-primary-400: #a855f7;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+  --color-primary-800: #5b21b6;
+  --color-primary-900: #4c1d95;
+  
+  --color-secondary-50: #ecfeff;
+  --color-secondary-100: #cffafe;
+  --color-secondary-200: #a5f3fc;
+  --color-secondary-300: #67e8f9;
+  --color-secondary-400: #22d3ee;
+  --color-secondary-500: #06b6d4;
+  --color-secondary-600: #0891b2;
+  --color-secondary-700: #0e7490;
+  --color-secondary-800: #155e75;
+  --color-secondary-900: #164e63;
+  
+  --color-accent-50: #fefce8;
+  --color-accent-100: #fef9c3;
+  --color-accent-200: #fef08a;
+  --color-accent-300: #fde047;
+  --color-accent-400: #facc15;
+  --color-accent-500: #eab308;
+  --color-accent-600: #ca8a04;
+  --color-accent-700: #a16207;
+  --color-accent-800: #854d0e;
+  --color-accent-900: #713f12;
+
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-fill-bar: fillBar 2s ease-out forwards;
+}
+
+/* Background Temático Medieval/RPG com Animações */
+.parchment-bg {
+  background-color: #f4f1e8;
+  background-image: 
+    /* Textura de pergaminho animada */
+    radial-gradient(circle at 20% 80%, rgba(180, 150, 100, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(180, 150, 100, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(150, 120, 80, 0.05) 0%, transparent 50%),
+    
+    /* Padrão decorativo sutil */
+    repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(139, 92, 246, 0.02) 2px, rgba(139, 92, 246, 0.02) 4px),
+    repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(180, 150, 100, 0.03) 2px, rgba(180, 150, 100, 0.03) 4px),
+    
+    /* Gradient base animado */
+    linear-gradient(135deg, #f4f1e8 0%, #ede5d3 50%, #e8dcc0 100%);
+  
+  /* Animação sutil de respiração */
+  animation: background-breathe 8s ease-in-out infinite;
+  position: relative;
+}
+
+/* Animação de respiração do background */
+@keyframes background-breathe {
+  0%, 100% {
+    filter: brightness(1) contrast(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.02) contrast(1.01);
+    transform: scale(1.001);
+  }
+}
+
+/* Camada de névoa mágica flutuante */
+.magical-mist {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.mist-particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.02) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-mist 15s ease-in-out infinite;
+}
+
+.mist-particle:nth-child(1) {
+  width: 300px;
+  height: 300px;
+  left: -10%;
+  top: 10%;
+  animation-delay: 0s;
+  animation-duration: 20s;
+}
+
+.mist-particle:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  right: -5%;
+  top: 30%;
+  animation-delay: 5s;
+  animation-duration: 25s;
+}
+
+.mist-particle:nth-child(3) {
+  width: 250px;
+  height: 250px;
+  left: 30%;
+  bottom: 10%;
+  animation-delay: 10s;
+  animation-duration: 18s;
+}
+
+.mist-particle:nth-child(4) {
+  width: 150px;
+  height: 150px;
+  right: 20%;
+  bottom: 30%;
+  animation-delay: 15s;
+  animation-duration: 22s;
+}
+
+@keyframes float-mist {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translate(20px, -15px) rotate(5deg) scale(1.1);
+    opacity: 0.5;
+  }
+  66% {
+    transform: translate(-15px, 10px) rotate(-3deg) scale(0.9);
+    opacity: 0.4;
+  }
+}
+
+/* Elementos decorativos flutuantes aprimorados */
+.floating-runes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.rune {
+  position: absolute;
+  color: rgba(139, 92, 246, 0.08);
+  font-family: var(--font-fantasy);
+  font-weight: bold;
+  animation: float-runes 25s infinite linear;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.rune:hover {
+  color: rgba(139, 92, 246, 0.15);
+  transform: scale(1.2);
+}
+
+.rune:nth-child(1) { left: 10%; top: 20%; font-size: 24px; animation-delay: 0s; }
+.rune:nth-child(2) { left: 80%; top: 15%; font-size: 18px; animation-delay: 4s; }
+.rune:nth-child(3) { left: 60%; top: 70%; font-size: 20px; animation-delay: 8s; }
+.rune:nth-child(4) { left: 15%; top: 80%; font-size: 16px; animation-delay: 12s; }
+.rune:nth-child(5) { left: 75%; top: 85%; font-size: 22px; animation-delay: 16s; }
+.rune:nth-child(6) { left: 40%; top: 10%; font-size: 19px; animation-delay: 20s; }
+
+@keyframes float-runes {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-5px) rotate(90deg) scale(1.05);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg) scale(0.95);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-15px) rotate(270deg) scale(1.1);
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Partículas de brilho mágico */
+.magic-sparkles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: radial-gradient(circle, #fbbf24 0%, transparent 70%);
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.sparkle:nth-child(odd) {
+  animation-delay: 1.5s;
+  background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+}
+
+.sparkle:nth-child(1) { left: 15%; top: 25%; animation-duration: 4s; }
+.sparkle:nth-child(2) { left: 85%; top: 35%; animation-duration: 3.5s; }
+.sparkle:nth-child(3) { left: 45%; top: 15%; animation-duration: 4.5s; }
+.sparkle:nth-child(4) { left: 25%; top: 75%; animation-duration: 3s; }
+.sparkle:nth-child(5) { left: 75%; top: 65%; animation-duration: 4.2s; }
+.sparkle:nth-child(6) { left: 55%; top: 85%; animation-duration: 3.8s; }
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Padrões decorativos de bordas com animação */
+.medieval-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(180, 150, 100, 0.1)) border-box,
+    repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(139, 92, 246, 0.05) 10px, rgba(139, 92, 246, 0.05) 12px);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: border-glow 4s ease-in-out infinite;
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Sombras temáticas com pulsação */
+.parchment-shadow {
+  box-shadow: 
+    0 4px 12px rgba(139, 92, 246, 0.1),
+    0 8px 32px rgba(180, 150, 100, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  animation: shadow-pulse 6s ease-in-out infinite;
+}
+
+@keyframes shadow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 4px 12px rgba(139, 92, 246, 0.1),
+      0 8px 32px rgba(180, 150, 100, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 6px 16px rgba(139, 92, 246, 0.15),
+      0 12px 40px rgba(180, 150, 100, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Textura de papel para os cards com animação sutil */
+.paper-texture {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.02) 1px, transparent 0);
+  background-size: 20px 20px;
+  animation: texture-shift 12s ease-in-out infinite;
+}
+
+@keyframes texture-shift {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 2px 2px;
+  }
+}
+
+/* Custom Scrollbar com tema medieval */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #e8dcc0, #f4f1e8);
+  border-radius: 7px;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8b5cf6, #7c3aed);
+  border-radius: 7px;
+  border: 2px solid #f4f1e8;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7c3aed, #6d28d9);
+}
+
+/* Keyframes das animações existentes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+  }
+}
+
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--fill-width);
+  }
+}
+
+/* Classes utilitárias personalizadas */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.border-glow {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.font-fantasy {
+  font-family: 'Cinzel', 'Georgia', serif;
+  font-weight: 600;
+}
+
+.font-code {
+  font-family: 'Fira Code', 'Monaco', monospace;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.hp-bar {
+  animation: fillBar 2s ease-out forwards;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.border-3 {
+  border-width: 3px;
+}
+
+.btn-epic {
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-epic:hover {
+  background: linear-gradient(135deg, #6d28d9, #2563eb);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Enhanced Interactive Animations */
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
+/* Magical glow effects */
+.magic-glow {
+  animation: magicGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes magicGlow {
+  from {
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(147, 51, 234, 0.8), 0 0 60px rgba(147, 51, 234, 0.4);
+  }
+}
+
+.magic-glow-dark {
+  animation: magicGlowDark 2s ease-in-out infinite alternate;
+}
+
+@keyframes magicGlowDark {
+  from {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.4);
+  }
+}
+
+/* Floating particles animation */
+.particle-float {
+  animation: particleFloat 3s ease-out forwards;
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) rotate(180deg) translateY(-50px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(360deg) translateY(-100px);
+  }
+}
+
+/* Spell casting effects */
+.spell-casting {
+  animation: spellCasting 1s ease-in-out;
+}
+
+@keyframes spellCasting {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.3; }
+}
+
+/* Achievement unlock effect */
+.achievement-unlock {
+  animation: achievementUnlock 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes achievementUnlock {
+  0% {
+    transform: scale(0) translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Enhanced card hover effects */
+.card-hover-epic {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-hover-epic:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(147, 51, 234, 0.3);
+}
+
+/* Dice rolling animation */
+.dice-roll {
+  animation: diceRoll 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes diceRoll {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  75% { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Attribute icon rotation */
+.icon-rotate {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-rotate:hover {
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* Progress bar magic animation */
+.progress-magic {
+  background: linear-gradient(90deg, 
+    rgba(147, 51, 234, 0.8) 0%, 
+    rgba(79, 70, 229, 0.8) 50%, 
+    rgba(147, 51, 234, 0.8) 100%);
+  background-size: 200% 100%;
+  animation: progressMagic 2s linear infinite;
+}
+
+@keyframes progressMagic {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Theme toggle enhancement */
+.theme-toggle {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, transparent, rgba(147, 51, 234, 0.5), transparent);
+  border-radius: inherit;
+  animation: borderGlow 2s linear infinite;
+  z-index: -1;
+}
+
+@keyframes borderGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Skill bar enhancements */
+.skill-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.4) 50%, 
+    transparent 100%);
+  animation: skillShine 2s ease-in-out infinite;
+}
+
+@keyframes skillShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Mobile enhancements */
+@media (max-width: 768px) {
+  .card-hover-epic:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+  
+  .magic-glow,
+  .magic-glow-dark {
+    animation-duration: 3s;
+  }
+}
+
+/* Loading animation */
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.loading-pulse {
+  animation: loadingPulse 2s ease-in-out infinite;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .magic-glow,
+  .magic-glow-dark,
+  .particle-float,
+  .progress-magic {
+    animation: none;
+  }
+  
+  .card-hover-epic:hover {
+    transform: translateY(-2px);
+  }
+}
